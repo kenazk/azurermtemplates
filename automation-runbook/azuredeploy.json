@@ -1,0 +1,190 @@
+{
+     "$schema": "http://schemas.microsoft.org/azure/deploymentTemplate?api-version=2015-01-01#",
+     "contentVersion": "1.0",
+     "parameters" : {
+        "accountName" : { "type" : "string" },
+        "location" : { "type" : "string" },
+        "variableName" : { "type" : "string" },
+        "scheduleName" : { "type" : "string" },
+        "jobScheduleName" : { "type" : "string" },
+        "jobOneName" : { "type" : "string" },
+        "jobTwoName" : { "type" : "string" }
+     },
+     "variables": {
+     },
+     "resources": [
+         {
+             "name": "[parameters('accountName')]",
+             "type": "Microsoft.Automation/automationAccounts",
+             "apiVersion": "2014-12-08",
+             "location": "[parameters('location')]",
+             "dependsOn": [
+             ],
+             "tags": {
+                 "key": "value"
+             },
+             "properties": {
+                 "comment": "Resource defined structure",
+                 "sku":
+                 {
+                     "name": "Free"
+                 }
+             },
+             "resources": [
+                {
+                     "name": "TestFasterWorkflow",
+                     "type": "runbooks",
+                     "apiVersion": "2014-12-08",
+                     "location": "[parameters('location')]",
+                     "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]"
+                     ],
+                     "tags": {
+                         "key": "value"
+                     },
+                     "properties": {
+                        "runbookType": "Script",
+                        "logProgress": "true",
+                        "logVerbose": "true",
+                        "description": "Calls get-twice once",
+                        "publishContentLink":
+                        {
+                            "uri": "http://oaascurrentrh.blob.core.windows.net/runbooks/TestFasterWorkflow.ps1",
+                            "version": "1.0.0.0",
+                            "hash":
+                            {
+                                "algorithm": "sha256",
+                                "value": "6E7753DAB302EAD767F5A2CF6A950C496EDE541EAC108D45B62762D7B53495F0"
+                            }
+                        }
+                     }
+                },
+                {
+                     "name": "GetDateTwice",
+                     "type": "runbooks",
+                     "apiVersion": "2014-12-08",
+                     "location": "[parameters('location')]",
+                     "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]"
+                     ],
+                     "tags": {
+                         "key": "value"
+                     },
+                     "properties": {
+                        "runbookType": "Script",
+                        "logProgress": "true",
+                        "logVerbose": "true",
+                        "description": "Calls get-date twice",
+                        "publishContentLink":
+                        {
+                            "uri": "http://oaascurrentrh.blob.core.windows.net/runbooks/GetDateTwice.ps1",
+                            "version": "1.0.0.0",
+                            "hash":
+                            {
+                                "algorithm": "sha256",
+                                "value": "C6867D8C5B52478630C9C6B9B6F6A124BE0B757CE1E6A2578CFCD455317BFB55"
+                            }
+                        }
+                     }
+                },
+                {
+                     "name": "[parameters('variableName')]",
+                     "type": "variables",
+                     "apiVersion": "2014-12-08",
+                     "location": "[parameters('location')]",
+                     "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]"
+                     ],
+                     "tags": {
+                         "key": "value"
+                     },
+                     "properties": {
+                       "description": "Some description",
+                       "value": "[parameters('variableName')]"
+                     }
+                 },
+                 {
+                     "name": "[parameters('jobOneName')]",
+                     "type": "jobs",
+                     "apiVersion": "2014-12-08",
+                     "location": "[parameters('location')]",
+                     "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]",
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/runbooks/TestFasterWorkflow')]"
+                     ],
+                     "tags": {
+                         "key": "value"
+                     },
+                     "properties": {
+                       "runbook": {
+                          "name": "TestFasterWorkflow"
+                       }
+                     }
+                 },
+                 {
+                     "name": "[parameters('jobTwoName')]",
+                     "type": "jobs",
+                     "apiVersion": "2014-12-08",
+                     "location": "[parameters('location')]",
+                     "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]",
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/runbooks/GetDateTwice')]",
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/jobs/', parameters('jobOneName'))]"
+                     ],
+                     "tags": {
+                         "key": "value"
+                     },
+                     "properties": {
+                       "runbook": {
+                          "name": "GetDateTwice"
+                       }
+                     }
+                 },
+                 {
+                     "name": "[parameters('scheduleName')]",
+                     "type": "schedules",
+                     "apiVersion": "2014-12-08",
+                     "location": "[parameters('location')]",
+                     "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]"
+                     ],
+                     "tags": {
+                         "key": "value"
+                     },
+                     "properties": {
+                         "description": "description",
+                         "startTime": "12/30/2015 23:00:00",
+                         "isEnabled": "true",
+                         "interval": "1",
+                         "frequency": "day"
+                     }
+                 },
+                 {
+                     "name": "[parameters('jobScheduleName')]",
+                     "type": "jobSchedules",
+                     "apiVersion": "2014-12-08",
+                     "location": "[parameters('location')]",
+                     "dependsOn": [
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'))]",
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/runbooks/GetDateTwice')]",
+                        "[concat('Microsoft.Automation/automationAccounts/', parameters('accountName'), '/schedules/', parameters('scheduleName'))]"
+                     ],
+                     "tags": {
+                         "key": "value"
+                     },
+                     "properties": {
+                       "schedule": {
+                          "name": "[parameters('scheduleName')]"
+                       },
+                       "runbook":
+                       {
+                          "name": "GetDateTwice"
+                       }
+                     }
+                 }
+             ]
+         }
+     ],
+     "outputs": {
+     }
+}
