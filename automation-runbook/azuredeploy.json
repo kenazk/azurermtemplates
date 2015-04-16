@@ -1,5 +1,5 @@
 {
-     "$schema": "http://schemas.microsoft.org/azure/deploymentTemplate?api-version=2015-01-01#",
+     "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
      "contentVersion": "1.0",
      "parameters" : {
         "accountName" : { "type" : "string" },
@@ -16,7 +16,7 @@
          {
              "name": "[parameters('accountName')]",
              "type": "Microsoft.Automation/automationAccounts",
-             "apiVersion": "2014-12-08",
+             "apiVersion": "2014-12-01-preview",
              "location": "[parameters('location')]",
              "dependsOn": [
              ],
