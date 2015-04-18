@@ -1,0 +1,7 @@
+{
+  "itemDisplayName": "Create a Dynamics NAV deployment",
+  "description": "This template creates a VM and runs a PowerShell script using the custom script extension. It also uses the listKeys function to get the Storage Account keys.",
+  "summary": "This template creates a VM and runs a PowerShell script using the custom script extension.",
+  "githubUsername": "kenazk",
+  "dateUpdated": "2015-04-18"
+}
