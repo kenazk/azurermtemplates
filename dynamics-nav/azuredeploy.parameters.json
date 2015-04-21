@@ -3,52 +3,43 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "newStorageAccountName": {
-            "value": ""
         },
         "location": {
             "value": "West US"
         },
         "dnsName": {
-            "value": ""
         },
         "publicIPAddressName": {
-            "value": ""
         },
         "publicIPAddressType": {
             "value": "Dynamic"
         },
         "vmName": {
-            "value": ""
         },
         "vmSize": {
             "value": "Standard_A2"
         },
         "adminUserName": {
-            "value": ""
+            "value": "admin123"
         },
         "adminPassword": {
-            "value": ""
+            "value": "admin123_!"
         },
         "virtualNetworkName": {
-            "value": ""
         },
         "nicName": {
-            "value": ""
         },
         "vmExtensionName": {
-            "value": ""
         },
         "customScriptStorageAccountName": {
-            "value": ""
         },
         "customScriptFilePath": {
-            "value": ""
+            "value": "https://raw.githubusercontent.com/kenazk/azurermtemplates/master/dynamics-nav/getprocess.ps1"
         },
         "customScriptCommandToExecute": {
             "value": "powershell.exe -File getprocess.ps1 process.txt test"
         },
         "customScriptStorageAccountResourceGroup": {
-            "value": ""
         }
     }
 }

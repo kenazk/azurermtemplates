@@ -112,13 +112,6 @@
             }
 
         },
-        "subnet2Name": {
-            "type": "string",
-            "defaultValue": "Subnet-2",
-            "metadata": {
-                "Description": "Subnet 2 name"
-            }
-        },
         "subnet1Prefix": {
             "type": "string",
             "defaultValue": "10.0.0.0/24",
@@ -126,13 +119,6 @@
                 "Description": "Subnet 1 prefix"
             }
 
-        },
-        "subnet2Prefix": {
-            "type": "string",
-            "defaultValue": "10.0.1.0/24",
-            "metadata": {
-                "Description": "Subnet 2 prefix"
-            }
         },
         "dnsName": {
             "type": "string",
@@ -222,16 +208,11 @@
                         "properties": {
                             "addressPrefix": "[parameters('subnet1Prefix')]"
                         }
-                    },
-                    {
-                        "name": "[parameters('subnet2Name')]",
-                        "properties": {
-                            "addressPrefix": "[parameters('subnet2Prefix')]"
-                        }
                     }
                 ]
             }
         },
+
         {
             "apiVersion": "2014-12-01-preview",
             "type": "Microsoft.Network/networkInterfaces",
