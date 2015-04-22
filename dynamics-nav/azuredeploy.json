@@ -161,6 +161,18 @@
             "metadata": {
                 "Description": "Resource Group of Custom Script"
             }
+        },
+        "SharePointAdminName" : {
+          "type": "string",
+          "metadata": {
+              "Description": "O365 SharePoint Admin Name"
+          }
+        },
+        "SharePointPassword" : {
+          "type" : "securestring",
+          "metadata": {
+              "Description": "O365 SharePoint Password"
+          }
         }
     },
     "variables": {
@@ -286,7 +298,7 @@
                 "typeHandlerVersion": "1.4",
                 "settings": {
                     "fileUris": ["[parameters('customScriptFilePath')]"],
-                    "commandToExecute": "[concat([parameters('customScriptCommandToExecute')], reference(parameters('vmName')).OsProfile.adminPassword]"
+                    "commandToExecute": "[concat(parameters('customScriptCommandToExecute'), parameters('adminUsername'),' ', parameters('adminPassword'),' ', reference(parameters('publicIPAddressName')).dnsSettings.fqdn, ' ', reference(parameters('publicIPAddressName')).dnsSettings.fqdn ,' ', parameters('SharePointAdminName'), ' ', parameters('SharePointPassword'))]"
                 },
                 "protectedSettings": {
                     "storageAccountName": "[parameters('customScriptStorageAccountName')]",

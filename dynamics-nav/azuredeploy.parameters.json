@@ -3,22 +3,22 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "newStorageAccountName": {
-            "value": "storagenav2"
+            "value": "storagenav3"
         },
         "location": {
             "value": "West US"
         },
         "dnsName": {
-            "value": "dnsnav2"
+            "value": "dnsnav3"
         },
         "publicIPAddressName": {
-            "value": "publicipnav2"
+            "value": "publicipnav3"
         },
         "publicIPAddressType": {
             "value": "Dynamic"
         },
         "vmName": {
-            "value": "vmnav1"
+            "value": "vmnav3"
         },
         "vmSize": {
             "value": "Standard_A1"
@@ -30,25 +30,31 @@
             "value": "admin123_!"
         },
         "virtualNetworkName": {
-            "value": "vnetnav2"
+            "value": "vnetnav3"
         },
         "nicName": {
-            "value": "nicnav2"
+            "value": "nicnav3"
         },
         "vmExtensionName": {
-            "value": "extensionnav2"
+            "value": "extensionnav3"
         },
         "customScriptStorageAccountName": {
-            "value": "storagenav2"
+            "value": "storagenav3"
         },
         "customScriptFilePath": {
-            "value": "https://raw.githubusercontent.com/kenazk/azurermtemplates/master/dynamics-nav/getprocess.ps1"
+            "value": "https://raw.githubusercontent.com/kenazk/azurermtemplates/master/dynamics-nav/install.ps1"
         },
         "customScriptCommandToExecute": {
-            "value": "powershell.exe -File install.ps1"
+            "value": "powershell.exe -File install.ps1 "
         },
         "customScriptStorageAccountResourceGroup": {
-            "value": "navtest2"
+            "value": "navtest3"
+        },
+        "SharePointAdminName" : {
+          "value" : "admin123"
+        },
+        "SharePointPassword" : {
+          "value" : "admin123_!"
         }
     }
 }
