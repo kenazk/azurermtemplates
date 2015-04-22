@@ -1,23 +1,27 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentParameters.json#",
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "newStorageAccountName": {
+            "value": "storagenav2"
         },
         "location": {
             "value": "West US"
         },
         "dnsName": {
+            "value": "dnsnav2"
         },
         "publicIPAddressName": {
+            "value": "publicipnav2"
         },
         "publicIPAddressType": {
             "value": "Dynamic"
         },
         "vmName": {
+            "value": "vmnav1"
         },
         "vmSize": {
-            "value": "Standard_A2"
+            "value": "Standard_A1"
         },
         "adminUserName": {
             "value": "admin123"
@@ -26,20 +30,25 @@
             "value": "admin123_!"
         },
         "virtualNetworkName": {
+            "value": "vnetnav2"
         },
         "nicName": {
+            "value": "nicnav2"
         },
         "vmExtensionName": {
+            "value": "extensionnav2"
         },
         "customScriptStorageAccountName": {
+            "value": "storagenav2"
         },
         "customScriptFilePath": {
             "value": "https://raw.githubusercontent.com/kenazk/azurermtemplates/master/dynamics-nav/getprocess.ps1"
         },
         "customScriptCommandToExecute": {
-            "value": "powershell.exe -File getprocess.ps1 process.txt test"
+            "value": "powershell.exe -File install.ps1"
         },
         "customScriptStorageAccountResourceGroup": {
+            "value": "navtest2"
         }
     }
 }
