@@ -17,6 +17,11 @@ $HardcodeLanguage = "W1";
 $HardcodeNavAdminUser = "admin";
 $HardcodeNavAdminPassword = $HardcodeVMAdminPassword;
 
+// Trims fqdn name
+$HardcodeCloudServiceName = $HardcodeCloudServiceName -replace ".$"
+$HardcodePublicMachineName = $HardcodePublicMachineName -replace ".$"
+
+// Not sure how to deal with this?
 // $HardcodeCertificatePfxFile = "<default for self signed cert. or a filename of a .pfx file on the machine> "
 // $HardcodeCertificatePfxPassword = "<Password for .pfx file if not self signed>"
 
