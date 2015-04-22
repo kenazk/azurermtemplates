@@ -32,9 +32,9 @@ $HardcodeSharePointLanguage = "default"
 $HardcodeSharePointTimezoneId = "default"
 $HardcodeSharePointAppCatalogUrl = "default"
 
-. 'C:\DEMO\Initialize\install.ps1' 4> 'C:\DEMO\Initialize\install.log'
-. 'C:\DEMO\O365 Integration\install.ps1' 4> 'C:\DEMO\O365 Integration\install.log'
-. 'C:\DEMO\ClickOnce\install.ps1' 4> 'C:\DEMO\ClickOnce\install.log'
-. 'C:\DEMO\BingMaps\install.ps1' 4> 'C:\DEMO\BingMaps\install.log'
-. 'C:\DEMO\PowerBI\install.ps1' 4> 'C:\DEMO\PowerBI\install.log'
-. 'C:\DEMO\WarmupNAV\install.ps1' 4> 'C:\DEMO\WarmupNAV\install.log'
+C:\DEMO\Initialize\install.ps1' 4> 'C:\DEMO\Initialize\install.log'
+C:\DEMO\O365 Integration\install.ps1' 4> 'C:\DEMO\O365 Integration\install.log'
+C:\DEMO\ClickOnce\install.ps1' 4> 'C:\DEMO\ClickOnce\install.log'
+C:\DEMO\BingMaps\install.ps1' 4> 'C:\DEMO\BingMaps\install.log'
+C:\DEMO\PowerBI\install.ps1' 4> 'C:\DEMO\PowerBI\install.log'
+C:\DEMO\WarmupNAV\install.ps1' 4> 'C:\DEMO\WarmupNAV\install.log'
